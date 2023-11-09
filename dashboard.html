@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <style>
-            body {
+
+        body {
             font-family: Arial, sans-serif;
         }
         .dashboard-title {
             font-size: 24px;
-            margin-bottom: 10px;
+            margin-bottom: 10px
         }
 
         .data-table {
@@ -72,6 +73,7 @@
             color: black;
         }
     </style>
+    
 </head>
 <body>
     <h1 class="dashboard-title">Welcome to Dashboard</h1>
@@ -188,7 +190,7 @@
 
         </tbody>
     </table>
-    <button onclick="submitCategoryData()" class="submit-button">Submit Category Data</button>
+    <button id="submitCategoryButton"  class="submit-button">Submit Category Data</button>
     <br><br>
 
     <h2 class="dashboard-title" id="scenarioInput">Scenario Input Table</h2>
@@ -218,7 +220,7 @@
             </tr>
         </tbody>
     </table>
-    <button onclick="submitScenarioInput()" class="submit-button">Submit Scenario Input</button>
+    <button id="submitScenarioInputButton" class="submit-button">Submit Scenario Input</button>
     <br><br>
 
     <h2 class="dashboard-title" id="scenarioData">Scenario Data Table</h2>
@@ -341,27 +343,14 @@
             
         </tbody>
     </table>
-    <button onclick="submitScenarioData()" class="submit-button">Submit Scenario Data</button>
+    <button id="submitScenarioDataButton"  class="submit-button">Submit Scenario Data</button>
     <br><br><br>
-
-
-    <!--  -->
 
     <h2>Charts</h2>
 
-    <div style="width: 80%; margin: 20px auto;">
-        <canvas id="categoryChart"></canvas>
-    </div>
-
-    <div style="width: 80%; margin: 20px auto;">
-        <canvas id="scenarioChart"></canvas>
-    </div>
-
-
-    <!--  -->
-
-    <script src="dashboard.js">
-     
-    </script>
+   
+    
+    <script src="dashboard.js" ></script>
+    
 </body>
 </html>
