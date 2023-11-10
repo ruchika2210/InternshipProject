@@ -14,21 +14,35 @@
         }
 
         .data-table {
-            width: 50%;
+            width: 100%;
             border-collapse: collapse;
-            margin: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
         }
-
+ 
         .data-table th, .data-table td {
-            border: 1px solid #dddddd;
+            border: 1px solid #ddd;
+            padding: 10px;
             text-align: left;
-            padding: 8px;
         }
-
+ 
         .data-table th {
             background-color: #f2f2f2;
+            font-weight: bold;
+       
+                }
+ 
+                .data-table input[type="text"],
+        .data-table input[type="number"],
+ 
+        .data-table select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
-
+ 
         .submit-button {
             background-color: #4caf50;
             color: white;
@@ -308,92 +322,11 @@
 
     <h2>Charts</h2>
 
-<<<<<<< HEAD
    
     
-    <script src="dashboard.js" ></script>
-=======
-    <script>
-        function submitCategoryData() {
-            const categoryData = [];
 
-        // Iterate through the table rows
-        const tableRows = document.querySelectorAll('.data-table tbody tr');
-        tableRows.forEach((row, index) => {
-            const name = row.querySelector('.category-name').value;
-            const weight = row.querySelector('.category-weight').value;
-            const direction = row.querySelector('.category-direction').value;
-            const evaluationType = row.querySelector('.category-evaluation-type').value;
-
-            // Create an object to represent the category
-            const category = {
-                name: name,
-                weight: weight,
-                direction: direction,
-                evaluationType: evaluationType
-            };
-
-            categoryData.push(category);
-        });
-
-        // Store the data in local storage as a JSON string
-        localStorage.setItem('categoryData', JSON.stringify(categoryData));
-
-        alert("Category data submitted and stored in local storage!");
-        }
-
-        function submitScenarioInput() {
-            const scenarioInputData = [];
-
-        // Iterate through the table rows
-        const tableRows = document.querySelectorAll('.data-table tbody tr');
-        tableRows.forEach((row, index) => {
-            const scenarioName = row.querySelector('.scenario-name').value;
-
-            // Create an object to represent the scenario input
-            const scenarioInput = {
-                scenarioName: scenarioName,
-            };
-
-            scenarioInputData.push(scenarioInput);
-        });
-
-        // Store the data in local storage as a JSON string
-        localStorage.setItem('scenarioInputData', JSON.stringify(scenarioInputData));
-
-        alert("Scenario Input data submitted and stored in local storage!");
-        }
-
-        function submitScenarioData() {
-            const scenarioData = [];
-
-// Iterate through the table rows
-const tableRows = document.querySelectorAll('.data-table tbody tr');
-tableRows.forEach((row, index) => {
-    const emissionsReduction = row.querySelector('.emissions-reduction').value;
-    const airQualityImpact = row.querySelector('.air-quality-impact').value;
-    const wildlifeDisturbance = row.querySelector('.wildlife-disturbance').value;
-    const incomeGeneration = row.querySelector('.income-generation').value;
-    const jobCreated = row.querySelector('.job-created').value;
-
-    // Create an object to represent the scenario data
-    const scenario = {
-        emissionsReduction: emissionsReduction,
-        airQualityImpact: airQualityImpact,
-        wildlifeDisturbance: wildlifeDisturbance,
-        incomeGeneration: incomeGeneration,
-        jobCreated: jobCreated
-    };
-
-    scenarioData.push(scenario);
-});
-
-// Store the data in local storage as a JSON string
-localStorage.setItem('scenarioData', JSON.stringify(scenarioData));
-
-alert("Scenario Data submitted and stored in local storage!");
-        }
+    <script src="dashboard.js">
+       
     </script>
->>>>>>> 161fead90dfd2600a30d5ce3a530f00c2e383984
 </body>
 </html>
