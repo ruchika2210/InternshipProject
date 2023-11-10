@@ -29,7 +29,7 @@ function submitScenarioInput() {
 
     document.querySelectorAll('.data-table:nth-child(2) tbody tr').forEach(row => {
         const scenario = {
-            name: row.querySelector('.scenario-name').value
+            name: row.querySelector('.scenario-name')?.value
         };
 
         scenarioInputData.scenarios.push(scenario);
@@ -70,7 +70,7 @@ function submitScenarioData() {
 
 document.getElementById('submitCategoryButton').addEventListener('click', submitCategoryData);
 document.getElementById('submitScenarioInputButton').addEventListener('click', submitScenarioInput);
-document.getElementById('submitScenarioDataButton').addEventListener('click', submitScenarioData);
+document.getElementById('submitScenarioDataButton').addEventListener('click', submitScenarioData)
 
 
 

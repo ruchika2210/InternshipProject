@@ -10,7 +10,7 @@
         }
         .dashboard-title {
             font-size: 24px;
-            margin-bottom: 10px;
+            margin-bottom: 10px
         }
 
         .data-table {
@@ -308,8 +308,92 @@
 
     <h2>Charts</h2>
 
+<<<<<<< HEAD
    
     
     <script src="dashboard.js" ></script>
+=======
+    <script>
+        function submitCategoryData() {
+            const categoryData = [];
+
+        // Iterate through the table rows
+        const tableRows = document.querySelectorAll('.data-table tbody tr');
+        tableRows.forEach((row, index) => {
+            const name = row.querySelector('.category-name').value;
+            const weight = row.querySelector('.category-weight').value;
+            const direction = row.querySelector('.category-direction').value;
+            const evaluationType = row.querySelector('.category-evaluation-type').value;
+
+            // Create an object to represent the category
+            const category = {
+                name: name,
+                weight: weight,
+                direction: direction,
+                evaluationType: evaluationType
+            };
+
+            categoryData.push(category);
+        });
+
+        // Store the data in local storage as a JSON string
+        localStorage.setItem('categoryData', JSON.stringify(categoryData));
+
+        alert("Category data submitted and stored in local storage!");
+        }
+
+        function submitScenarioInput() {
+            const scenarioInputData = [];
+
+        // Iterate through the table rows
+        const tableRows = document.querySelectorAll('.data-table tbody tr');
+        tableRows.forEach((row, index) => {
+            const scenarioName = row.querySelector('.scenario-name').value;
+
+            // Create an object to represent the scenario input
+            const scenarioInput = {
+                scenarioName: scenarioName,
+            };
+
+            scenarioInputData.push(scenarioInput);
+        });
+
+        // Store the data in local storage as a JSON string
+        localStorage.setItem('scenarioInputData', JSON.stringify(scenarioInputData));
+
+        alert("Scenario Input data submitted and stored in local storage!");
+        }
+
+        function submitScenarioData() {
+            const scenarioData = [];
+
+// Iterate through the table rows
+const tableRows = document.querySelectorAll('.data-table tbody tr');
+tableRows.forEach((row, index) => {
+    const emissionsReduction = row.querySelector('.emissions-reduction').value;
+    const airQualityImpact = row.querySelector('.air-quality-impact').value;
+    const wildlifeDisturbance = row.querySelector('.wildlife-disturbance').value;
+    const incomeGeneration = row.querySelector('.income-generation').value;
+    const jobCreated = row.querySelector('.job-created').value;
+
+    // Create an object to represent the scenario data
+    const scenario = {
+        emissionsReduction: emissionsReduction,
+        airQualityImpact: airQualityImpact,
+        wildlifeDisturbance: wildlifeDisturbance,
+        incomeGeneration: incomeGeneration,
+        jobCreated: jobCreated
+    };
+
+    scenarioData.push(scenario);
+});
+
+// Store the data in local storage as a JSON string
+localStorage.setItem('scenarioData', JSON.stringify(scenarioData));
+
+alert("Scenario Data submitted and stored in local storage!");
+        }
+    </script>
+>>>>>>> 161fead90dfd2600a30d5ce3a530f00c2e383984
 </body>
 </html>
