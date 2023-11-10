@@ -36,6 +36,7 @@
             margin-top: 10px;
         }
     </style>
+    
 </head>
 <body>
     <h1 class="dashboard-title">Welcome to Dashboard</h1>
@@ -146,7 +147,7 @@
 
         </tbody>
     </table>
-    <button onclick="submitCategoryData()" class="submit-button">Submit Category Data</button>
+    <button id="submitCategoryButton"  class="submit-button">Submit Category Data</button>
     <br><br>
 
     <h2 class="dashboard-title">Scenario Input Table</h2>
@@ -176,7 +177,7 @@
             </tr>
         </tbody>
     </table>
-    <button onclick="submitScenarioInput()" class="submit-button">Submit Scenario Input</button>
+    <button id="submitScenarioInputButton" class="submit-button">Submit Scenario Input</button>
     <br><br>
 
     <h2 class="dashboard-title">Scenario Data Table</h2>
@@ -299,23 +300,13 @@
             
         </tbody>
     </table>
-    <button onclick="submitScenarioData()" class="submit-button">Submit Scenario Data</button>
+    <button id="submitScenarioDataButton"  class="submit-button">Submit Scenario Data</button>
     <br><br><br>
 
     <h2>Charts</h2>
 
-    <script>
-        function submitCategoryData() {
-            alert("Category data submitted!");
-        }
-
-        function submitScenarioInput() {
-            alert("Scenario input submitted!");
-        }
-
-        function submitScenarioData() {
-            alert("Scenario data submitted!");
-        }
-    </script>
+   
+    
+    <script src="dashboard.js" ></script>
 </body>
 </html>
