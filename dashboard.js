@@ -1,6 +1,17 @@
+// Function to retrieve data from local storage
+function getStoredData(key) {
+    const storedData = localStorage.getItem(key);
+    return storedData ? JSON.parse(storedData) : null;
+}
+
 // Function to render a bar chart
 function renderBarChart(categoryData) {
     const ctx = document.getElementById('barChart').getContext('2d');
+
+    // Check if there's an existing chart and destroy it
+    if (window.myBarChart) {
+        window.myBarChart.destroy();
+    }
 
     // Extract data for the chart
     const labels = categoryData.categories.map(category => category.name);
@@ -28,7 +39,7 @@ function renderBarChart(categoryData) {
     };
 
     // Create the bar chart
-    const barChart = new Chart(ctx, {
+    window.myBarChart = new Chart(ctx, {
         type: 'bar',
         data: data,
         options: options
@@ -81,94 +92,19 @@ function renderPieChart(scenarioData) {
     });
 }
 
-// Retrieve data from Category Input Table
-const categoryData = {
-    categories: []
-};
 
-document.querySelectorAll('#categoryInput .data-table tbody tr').forEach(row => {
-    const category = {
-        name: row.querySelector('.category-name')?.value,
-        weight: row.querySelector('.category-weight')?.value,
-        direction: row.querySelector('.category-direction')?.value,
-        evaluationType: row.querySelector('.category-evaluation-type')?.value
-    };
-    console.log(category);  // Add this line
+// Function to store data in local storage
+function storeData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
 
-    categoryData.categories.push(category);
-});
-
-console.log(categoryData);  // Add this line
-
-
-// Retrieve data from Scenario Input Table
-const scenarioInputData = {
-    scenarios: []
-};
-
-document.querySelectorAll('#scenarioInput .data-table tbody tr').forEach(row => {
-    const scenario = {
-        name: row.querySelector('.scenario-name')?.value
-    };
-
-    console.log(scenario);  // Add this line
-
-    scenarioInputData.scenarios.push(scenario);
-});
-
-console.log(scenarioInputData);  // Add this line
-
-// Retrieve data from Scenario Data Table
-const scenarioData = {
-    scenarios: []
-};
-
-document.querySelectorAll('#scenarioData .data-table tbody tr').forEach(row => {
-    const emissionsReduction = row.querySelector('.emissions-reduction')?.value;
-    const airQualityImpact = row.querySelector('.air-quality-impact')?.value;
-    const wildlifeDisturbance = row.querySelector('.wildlife-disturbance')?.value;
-    const incomeGeneration = row.querySelector('.income-generation')?.value;
-    const jobCreated = row.querySelector('.job-created')?.value;
-
-    // Check if all values are present before adding to scenarios
-    if (emissionsReduction && airQualityImpact && wildlifeDisturbance && incomeGeneration && jobCreated) {
-        const scenario = {
-            emissionsReduction,
-            airQualityImpact,
-            wildlifeDisturbance,
-            incomeGeneration,
-            jobCreated
-        };
-        console.log(scenario);  // Add this line
-
-        scenarioData.scenarios.push(scenario);
-    }
-});
-
-console.log(scenarioData);  // Add this line
-
-// Store data in localStorage
-localStorage.setItem('categoryData', JSON.stringify(categoryData));
-localStorage.setItem('scenarioInputData', JSON.stringify(scenarioInputData));
-localStorage.setItem('scenarioData', JSON.stringify(scenarioData));
-
-
-console.log(categoryData);
-console.log(scenarioData);
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    renderBarChart(categoryData);
-    renderPieChart(scenarioData);
-});
-
-//Form submitted and stored in local storage
+// Function to handle the submission of category data
 function submitCategoryData() {
     const categoryData = {
         categories: []
     };
 
-    document.querySelectorAll('.data-table tbody tr').forEach(row => {
+    document.querySelectorAll('#categoryInput .data-table tbody tr').forEach(row => {
         const category = {
             name: row.querySelector('.category-name')?.value,
             weight: row.querySelector('.category-weight')?.value,
@@ -179,35 +115,20 @@ function submitCategoryData() {
         categoryData.categories.push(category);
     });
 
-    localStorage.setItem('categoryData', JSON.stringify(categoryData));
-    alert("Category data submitted!");
+    // Store data in local storage
+    storeData('categoryData', categoryData);
+
+    // Render the charts
+    renderBarChart(categoryData);
 }
 
-function submitScenarioInput() {
-    const scenarioInputData = {
-        scenarios: []
-    };
-
-    document.querySelectorAll('.data-table tbody tr').forEach(row => {
-        const scenario = {
-            name: row.querySelector('.scenario-name')?.value
-        };
-
-        // console.log(scenario);
-
-        scenarioInputData.scenarios.push(scenario);
-    });
-
-    localStorage.setItem('scenarioInputData', JSON.stringify(scenarioInputData));
-    alert("Scenario input submitted!");
-}
-
+// Function to handle the submission of scenario data
 function submitScenarioData() {
     const scenarioData = {
         scenarios: []
     };
 
-    document.querySelectorAll('.data-table tbody tr').forEach(row => {
+    document.querySelectorAll('#scenarioData .data-table tbody tr').forEach(row => {
         const scenario = {
             emissionsReduction: row.querySelector('.emissions-reduction')?.value,
             airQualityImpact: row.querySelector('.air-quality-impact')?.value,
@@ -216,15 +137,30 @@ function submitScenarioData() {
             jobCreated: row.querySelector('.job-created')?.value
         };
 
-        // console.log(scenario);
-
         scenarioData.scenarios.push(scenario);
     });
 
-    localStorage.setItem('scenarioData', JSON.stringify(scenarioData));
-    alert("Scenario data submitted!");
+    // Store data in local storage
+    storeData('scenarioData', scenarioData);
+
+    // Render the charts
+    renderPieChart(scenarioData);
 }
 
+// Attach event listeners to submit buttons
 document.getElementById('submitCategoryButton').addEventListener('click', submitCategoryData);
-document.getElementById('submitScenarioInputButton').addEventListener('click', submitScenarioInput);
 document.getElementById('submitScenarioDataButton').addEventListener('click', submitScenarioData);
+
+// Retrieve stored data and render charts on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const storedCategoryData = getStoredData('categoryData');
+    const storedScenarioData = getStoredData('scenarioData');
+
+    if (storedCategoryData) {
+        renderBarChart(storedCategoryData);
+    }
+
+    if (storedScenarioData) {
+        renderPieChart(storedScenarioData);
+    }
+});
