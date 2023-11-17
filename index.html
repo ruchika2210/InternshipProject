@@ -1,0 +1,45 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Sign Up</h1>
+            <form>
+                <div class="input-group">
+
+                    <div class="input-field" id="nameField" >
+                        <i class="fa fa-user"></i>
+                        <input type="text"  placeholder="Name"/>
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa fa-envelope"></i>
+                        <input type="email"  id="email" placeholder="email"/>
+                    </div>
+
+                    <div class="input-field" >
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password" placeholder="password"/>
+                    </div>
+                    <p>Lost Password-<a href="#">Click Here!</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="button" id="signupBtn">Sign up</button>
+                    <button type="button" class="disable" id="signinBtn">Sign in</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="app.js" type="module"></script>
+    </body>
+    </html>
