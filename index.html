@@ -1,45 +1,260 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-    <div class="container">
-        <div class="form-box">
-            <h1 id="title">Sign Up</h1>
-            <form>
-                <div class="input-group">
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #myVideo {
+       position: fixed;
+       right: 0;
+       bottom: 0;
+       min-width: 100%;
+       min-height: 100%;
+     }
 
-                    <div class="input-field" id="nameField" >
-                        <i class="fa fa-user"></i>
-                        <input type="text"  placeholder="Name"/>
-                    </div>
+             /* Initial styles for images */
+             .img,
+        .image-2,
+        .image-3,
+        .image-9 {
+            width: 100px; /* Set your desired width */
+            height: auto; /* Maintain aspect ratio */
+            transition: transform 0.3s; /* Add smooth transition */
+        }
 
-                    <div class="input-field">
-                        <i class="fa fa-envelope"></i>
-                        <input type="email"  id="email" placeholder="email"/>
-                    </div>
+        /* Hover effect */
+        .img:hover,
+        .image-2:hover,
+        .image-3:hover,
+        .image-9:hover {
+            transform: scale(1.1); /* Increase size on hover (adjust as needed) */
+        }
+        .overlap-6 {
+            text-align: center;
+        }
 
-                    <div class="input-field" >
-                        <i class="fa fa-lock"></i>
-                        <input type="password" id="password" placeholder="password"/>
-                    </div>
-                    <p>Lost Password-<a href="#">Click Here!</a></p>
-                </div>
-                <div class="btn-field">
-                    <button type="button" id="signupBtn">Sign up</button>
-                    <button type="button" class="disable" id="signinBtn">Sign in</button>
+        #calculateButton {
+            display: inline-block;
+            padding: 10px 20px; /* Adjust padding for size */
+            font-size: 16px; /* Adjust font size */
+            border: 2px solid #3498db; /* Border color */
+            background-color: #3498db; /* Button color */
+            color: #fff; /* Text color */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Add a smooth transition for the hover effect */
+        }
 
-                </div>
-            </form>
+        #calculateButton:hover {
+            background-color: #67b929; /* Change the button color on hover */
+        }
+
+        .text-wrapper-2 a,
+  .text-wrapper-3 a,
+  .text-wrapper-4 a {
+    color: white;
+    text-decoration: none; /* Optional: Remove underline */
+  }
+         </style>
+  </head>
+  <body>
+    <div class="desktop">
+      
+      <div class="div">
+        
+
+          <video autoplay muted loop id="myVideo">
+           <source src="img/video1.mp4" type="video/mp4">
+          </video>
+          <div class="text-wrapper">CLIMATE NEUTRAL</div>
+          <p class="p">Knowing our world in order to benefit humanity</p>
+          <div class="text-wrapper-2"><a href="about.html">About</a></div>
+          <div class="text-wrapper-3"><a href="signup.html">Signup</a></div>
+          <div class="text-wrapper-4"><a href="login.html">Login</a></div>
+          <div class="overlap"></div>
+           <p class="text-wrapper-6">Key Indicators of Global Climate Health</p>
+            <div class="text-wrapper-7">Carbon Neutral Pledge</div>
         </div>
+        <div class="news-features">News &amp; Features</div>
+        <img class="img" src="img/image-1.png" />
+        <img class="image-2" src="img/image-2.png" />
+        <img class="image-3" src="img/image-3.png" />
+        <p class="text-wrapper-8">
+          Such high-tide flooding that inundates roads and buildings along the west coast of the Americas tends to be
+          uncommon outside of El Niño years, but that could change by the 2030s.
+        </p>
+        <p class="text-wrapper-9">
+          Methane ‘hot spots’ in the Yukon-Kuskokwim Delta are more likely to be found where recent wildfires burned
+          into the tundra, altering carbon emissions from the land.
+        </p>
+        <p class="text-wrapper-10">
+          NISAR will help researchers explore how changes in Earth’s forest and wetland ecosystems are affecting the
+          global carbon cycle and influencing climate change.
+        </p>
+        <div class="overlap-group">
+          <div class="overlap-2">
+            <div class="text-wrapper-11">Evidence</div>
+            <div class="text-wrapper-11">Evidence</div>
+            <div class="text-wrapper-11">Evidence</div>
+          </div>
+          <p class="what-evidence">
+            What evidence supports the existence of climate change and<br />
+            the impact of human activities on it?
+          </p>
+        </div>
+        <div class="overlap-3">
+          <p class="text-wrapper-12">
+            What are the primary causes of climate change according to scientific consensus?
+          </p>
+          <div class="text-wrapper-13">Causes</div>
+        </div>
+        <div class="overlap-4">
+          <div class="text-wrapper-14">Effects</div>
+          <p class="text-wrapper-15">
+            What are the potential impacts of climate change on the environment and human health?
+          </p>
+        </div>
+        <div class="overlap-5">
+          <p class="text-wrapper-16">
+            What are some solutions to climate change, and how can we effectively address this pressing global issue?
+          </p>
+          <div class="text-wrapper-17">Solution</div>
+        </div>
+        <div class="overlap-group-2">
+          <img class="image-4" src="img/image-19.png" />
+          <p class="text-wrapper-18">Our Vision for the Climate in 2030</p>
+          <img class="image-5" src="img/image-10.png" />
+          <img class="image-6" src="img/image-11.png" />
+          <img class="image-7" src="img/image-20.png" />
+          <img class="image-8" src="img/image-21.png" />
+          <p class="with-the-synergy-of">
+            With the synergy of nature&#39;s force and the influence of robust policies and markets, we aim to annually
+            decrease or sequester 3 billion metric tons of carbon.
+          </p>
+          <div class="text-wrapper-19">Reduce CO2 emissions</div>
+          <p class="text-wrapper-20">More plants for a resilient climate</p>
+          <p class="text-wrapper-21">
+            Enhancing plant growth and diversity is essential for building climate resilience and mitigating the impact
+            of climate change.
+          </p>
+          <img class="line" src="img/line-1.svg" />
+          <img class="line-2" src="img/line-2.svg" />
+        </div>
+        <img class="image-9" src="img/image-4.png" />
+        <p class="text-wrapper-22">
+          The annual Arctic sea ice minimum (lowest) annual extent was the sixth-lowest on record this year, while
+          Antarctic sea ice reached its lowest maximum ever. These both continue a long-term downward trend due to
+          human-caused global warming.
+        </p>
+        <div class="overlap-6">
+          <div class="text-wrapper-23">Let’s see the Analysis</div>
+          <p class="streamlines">
+            Streamlines&nbsp;&nbsp;calculations and presents results through intuitive tables and charts. These visual
+            aids effectively communicate data, enabling informed decision-making. Based on the calculated outcomes, we
+            can suggest scenarios, empowering users to make impactful choices in addressing climate change.
+          </p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <button type="button" id="calculateButton">Calculate</button>
+        </div>
+        <div class="text-wrapper-24">Climate Change</div>
+        <div class="overlap-7">
+          <p class="what-is-the">
+            <span class="span">What is the difference between climate change and climate variability?<br /></span>
+            <span class="text-wrapper-25"
+              >Climate change happens over time, generally over decades or more. Climate variability, on the other hand,
+              comprises changes that occur over shorter time periods, such as a month, season, or year. Climate
+              variability describes the system&#39;s natural fluctuation. One abnormally cold or rainy year followed by
+              an unusually warm or dry year, for example, would not be seen as an indicator of climate change.</span
+            >
+          </p>
+          <p class="why-has-my-town">
+            <span class="span"
+              >Why has my town experienced record-breaking cold and snowfall if the climate is warming?<br
+            /></span>
+            <span class="text-wrapper-25"
+              >Despite global warming, certain locations may see unusually cold or snowy winters. These cold periods are
+              caused by local weather pattern variability, which can result in colder-than-average seasons or even
+              colder-than-average years at the local or regional level. In reality, a warmer environment holds more
+              water vapour in the air, which can cause heavier snowfall in some regions. A warmer climate can lead to
+              larger snowstorms as long as it is cold enough to snow.</span
+            >
+          </p>
+          <p class="do-natural">
+            <span class="span">Do natural variations in climate contribute to today’s climate change?<br /></span>
+            <span class="text-wrapper-25"
+              >Natural cycles of warming and cooling occur on Earth as a result of variables such as variations in the
+              sun&#39;s position or volcanic activity. There were instances in the distant past, for example, when the
+              world was warmer than it is now. Natural temperature changes, however, do not explain today&#39;s climate
+              change. The majority of the warming since 1950 has been driven by human emissions of greenhouse gases from
+              various activities, notably the usage of fossil fuels.</span
+            >
+          </p>
+          <p class="why-be-concerned">
+            <span class="span"
+              >Why be concerned about a degree or two change in the average global temperature?<br
+            /></span>
+            <span class="text-wrapper-25"
+              >A degree or two change in average global temperature may not seem like much of a concern, but relatively
+              small changes in the earth&#39;s average temperature can cause significant changes in local and regional
+              climate, posing threats to public health and safety, water resources, agriculture, infrastructure, and
+              ecosystems. The 2018 National Climate Assessment cites numerous examples, including an increase in heat
+              waves and days with temperatures above 90°F; more extreme weather events such as storms, droughts, and
+              floods; and a projected sea level rise of 1 to 4 feet by the end of the century, which could submerge
+              certain areas of the country.</span
+            >
+          </p>
+          <p class="how-can-people">
+            <span class="span">How can people reduce the risks of climate change?</span>
+            <span class="text-wrapper-25"
+              > People may lessen the dangers of climate change by adopting decisions that reduce greenhouse gas
+              emissions and planning for future changes. People&#39;s decisions now will impact the globe for decades,
+              if not centuries, to come. Communities may also prepare for changes in the next decades by identifying and
+              mitigating vulnerabilities and incorporating climate change risks into planning and development. Such
+              steps can safeguard the most vulnerable groups, such as small children, the elderly, and those living in
+              poverty, from the health and safety risks posed by climate change.</span
+            >
+          </p>
+          <p class="what-are-the">
+            <span class="span">What are the benefits of taking action now?</span>
+            <span class="text-wrapper-25"
+              > The longer people wait to address climate change, the more detrimental its impacts on the earth and
+              people&#39;s health will be. If individuals do not act quickly, more harsh and costly actions to keep
+              greenhouse gases from surpassing harmful levels may be required later. According to the most recent
+              National Climate Assessment, global efforts to reduce greenhouse gas emissions could save tens of
+              thousands of lives in the United States each year by the end of the century, as well as billions of
+              dollars in damages from water scarcity, wildfires, agricultural losses, flooding, and other effects.
+              People may take a variety of steps right now to help lower the danger of climate change while also
+              enhancing the natural environment and community infrastructure.</span
+            >
+          </p>
+          <div class="text-wrapper-26">Climate Neutral FAQ’s</div>
+        </div>
+        <div class="overlap-8">
+          <img class="image-10" src="img/image-22.png" />
+          <img class="image-10" src="img/image-23.png" />
+          <p class="the-climate-neutral">
+            The Climate Neutral website features an app for multi-objective decision-making analysis. Users access this
+            website through&nbsp;&nbsp;user authentication and input their evaluation categories and scenario details.
+            This processes the data, presenting results through tables and charts, and recommends a scenario based on
+            the calculations.
+          </p>
+          <div class="text-wrapper-27">Climate Neutral</div>
+          <img class="image-11" src="img/image-17.png" />
+          <img class="image-12" src="img/image-16.png" />
+          <img class="image-13" src="img/image-15.png" />
+          <img class="image-14" src="img/image-14.png" />
+          <div class="text-wrapper-28">Social</div>
+          <div class="email-climateneutral">Email :&nbsp;&nbsp;climateneutral@gmail.com</div>
+          <div class="text-wrapper-29">FAQ’s</div>
+          <div class="text-wrapper-30">Let’s Analyse</div>
+          <div class="text-wrapper-31">Our Vision for 2030</div>
+          <div class="text-wrapper-32">Climate Changes</div>
+          <div class="news-features-2">News &amp; Features</div>
+          <div class="text-wrapper-33">Sign Up</div>
+          <div class="text-wrapper-34">Explore</div>
+          <img class="line-3" src="img/line-3.svg" />
+          <img class="line-4" src="img/line-4.svg" />
+        </div>
+        <p class="element-climate-neutral">© 2023 Climate Neutral&nbsp;&nbsp;| Terms of Use</p>
+      </div>
     </div>
-
-
-    <script src="app.js" type="module"></script>
-    </body>
-    </html>
+  </body>
+</html>
