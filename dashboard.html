@@ -4,91 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <style>
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2; 
-        margin: 0;
-        }
-        .dashboard-title-main{
-            font-size: 32px;
-            margin-bottom: 10px;
-            color: #333;
-            text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .dashboard-title {
-            font-size: 24px;
-            margin-bottom: 10px
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
- 
-        .data-table th, .data-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
- 
-        .data-table th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-       
-                }
- 
-                .data-table input[type="text"],
-        .data-table input[type="number"],
- 
-
-        .data-table select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
- 
-        .submit-button {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .navbar {
-        background-color: #333;
-        overflow: hidden;
-        display: flex;
-        justify-content: space-around; 
-        align-items: center; 
-    }
-
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        padding: 14px 16px;
-        transition: background-color 0.3s;
-    }
-
-    .navbar a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-        
-        
-    </style>
-    
+     <link rel="stylesheet" href="./dashboard.css">
 </head>
 <body>
     <h1 class="dashboard-title-main">Welcome to Dashboard</h1>
@@ -101,7 +17,7 @@
     
     <h2 class="dashboard-title" id="categoryInput">Category Input Table</h2>
 
-    <table class="data-table">
+    <table class="data-table " id="categoryTable">
         <thead>
             <tr>
                 <th> </th>
@@ -112,104 +28,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Category1</td>
-                <td><input type="text" class="category-name"></td>
-                <td><input type="number" step="0.01" class="category-weight"></td>
-                <td>
-                    <select class="category-direction">
-                        <option value="positive">Positive</option>
-                        <option value="negative">Negative</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="category-evaluation-type">
-                        <option value="Ordinal">Ordinal</option>
-                        <option value="Linear">Linear</option>
-                        <option value="Descriptive">Descriptive</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Category2</td>
-                <td><input type="text" class="category-name"></td>
-                <td><input type="number" step="0.01" class="category-weight"></td>
-                <td>
-                    <select class="category-direction">
-                        <option value="positive">Positive</option>
-                        <option value="negative">Negative</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="category-evaluation-type">
-                        <option value="Ordinal">Ordinal</option>
-                        <option value="Linear">Linear</option>
-                        <option value="Descriptive">Descriptive</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Category3</td>
-                <td><input type="text" class="category-name"></td>
-                <td><input type="number" step="0.01" class="category-weight"></td>
-                <td>
-                    <select class="category-direction">
-                        <option value="positive">Positive</option>
-                        <option value="negative">Negative</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="category-evaluation-type">
-                        <option value="Ordinal">Ordinal</option>
-                        <option value="Linear">Linear</option>
-                        <option value="Descriptive">Descriptive</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Category4</td>
-                <td><input type="text" class="category-name"></td>
-                <td><input type="number" step="0.01" class="category-weight"></td>
-                <td>
-                    <select class="category-direction">
-                        <option value="positive">Positive</option>
-                        <option value="negative">Negative</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="category-evaluation-type">
-                        <option value="Ordinal">Ordinal</option>
-                        <option value="Linear">Linear</option>
-                        <option value="Descriptive">Descriptive</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Category5</td>
-                <td><input type="text" class="category-name"></td>
-                <td><input type="number" step="0.01" class="category-weight"></td>
-                <td>
-                    <select class="category-direction">
-                        <option value="positive">Positive</option>
-                        <option value="negative">Negative</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="category-evaluation-type">
-                        <option value="Ordinal">Ordinal</option>
-                        <option value="Linear">Linear</option>
-                        <option value="Descriptive">Descriptive</option>
-                    </select>
-                </td>
-            </tr>
-
+           
         </tbody>
     </table>
+    <button id="addCategoryButton" class="submit-button">Add Category</button>
     <button id="submitCategoryButton"  class="submit-button">Submit Category Data</button>
     <br><br>
 
     <h2 class="dashboard-title" id="scenarioInput">Scenario Input Table</h2>
-    <table class="data-table">
+    <table class="data-table" id="scenarioInputTable">
         <thead>
             <tr>
                 <th>Scenario</th>
@@ -217,29 +44,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Scenario1</td>
-                <td><input type="text" class="scenario-name"></td>
-            </tr>
-            <tr>
-                <td>Scenario2</td>
-                <td><input type="text" class="scenario-name"></td>
-            </tr>
-            <tr>
-                <td>Scenario3</td>
-                <td><input type="text" class="scenario-name"></td>
-            </tr>
-            <tr>
-                <td>Scenario4</td>
-                <td><input type="text" class="scenario-name"></td>
-            </tr>
+            
         </tbody>
     </table>
+    <button id="addScenarioButton" class="submit-button">Add Scenario</button>
     <button id="submitScenarioInputButton" class="submit-button">Submit Scenario Input</button>
     <br><br>
 
     <h2 class="dashboard-title" id="scenarioData">Scenario Data Table</h2>
-    <table class="data-table">
+    <table class="data-table" id="scenarioDataTable">
         <thead>
             <tr>
                 <th> </th>
@@ -277,87 +90,9 @@
                 </td>
                 <td><input type="number" step="1" value="0" class="job-created"></td>
             </tr>
-            <tr>
-                <td>Scenario2</td>
-                    <td><input type="number" step="1" value="0" class="emissions-reduction"></td>
-                    <td>
-                        <select class="air-quality-impact">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="wildlife-disturbance">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="income-generation">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td><input type="number" step="1" value="0" class="job-created"></td>
-            </tr>
-            <tr>
-                <td>Scenario3</td>
-                    <td><input type="number" step="1" value="0" class="emissions-reduction"></td>
-                    <td>
-                        <select class="air-quality-impact">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="wildlife-disturbance">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="income-generation">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td><input type="number" step="1" value="0" class="job-created"></td>
-            </tr>
-            <tr>
-                <td>Scenario4</td>
-                    <td><input type="number" step="1" value="0" class="emissions-reduction"></td>
-                    <td>
-                        <select class="air-quality-impact">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="wildlife-disturbance">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="income-generation">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                    </td>
-                    <td><input type="number" step="1" value="0" class="job-created"></td>
-            </tr>
-            
         </tbody>
     </table>
+    <button id="addScenarioDataButton" class="submit-button">Add Scenario Data</button>
     <button id="submitScenarioDataButton"  class="submit-button">Submit Scenario Data</button>
     <br><br><br>
 
