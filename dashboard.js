@@ -1,5 +1,12 @@
+/**
+ * Submits category data.
+ * @function
+ * @name submitCategoryData
+ * @description Fetches data from the form and stores it in localStorage.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ */
 function submitCategoryData() {
-    // Fetch data from the form
     const categoryData = {
         categories: []
     };
@@ -21,6 +28,14 @@ function submitCategoryData() {
     alert("Category data submitted!");
 }
 
+/**
+ * Submits scenario input data.
+ * @function
+ * @name submitScenarioInput
+ * @description Fetches data from the form and stores it in localStorage.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ */
 function submitScenarioInput() {
     // Fetch data from the form
     const scenarioInputData = {
@@ -41,6 +56,14 @@ function submitScenarioInput() {
     alert("Scenario input submitted!");
 }
 
+/**
+ * Submits scenario data.
+ * @function
+ * @name submitScenarioData
+ * @description Fetches data from the form and stores it in localStorage.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ */
 function submitScenarioData() {
     // Fetch data from the form
     const scenarioData = {
@@ -62,15 +85,20 @@ function submitScenarioData() {
     // Add data to localStorage
     localStorage.setItem('scenarioData', JSON.stringify(scenarioData));
 
-
-
     alert("Scenario data submitted!");
 }
 
-
 // dashboard.js
 
-// Function to add a new row for a category
+/**
+ * Adds a new row for a category.
+ * @function
+ * @name addRow
+ * @description Adds a new row to the specified table and populates cells based on the table type.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ * @param {string} tableId - The ID of the table to which the row will be added.
+ */
 function addRow(tableId) {
     const table = document.getElementById(tableId);
     const newRow = table.insertRow(-1); // Insert at the last position
@@ -101,7 +129,15 @@ function addRow(tableId) {
     deleteCell.appendChild(deleteButton);
 }
 
-// Function to add cells for the Category table
+/**
+ * Adds cells for the Category table.
+ * @function
+ * @name addCategoryCells
+ * @description Adds cells to a Category table row.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ * @param {HTMLTableRowElement} row - The table row to which cells will be added.
+ */
 function addCategoryCells(row) {
     // Example cells, modify as per your needs
     const rowIndex = row.rowIndex;
@@ -112,14 +148,30 @@ function addCategoryCells(row) {
     addCell(row, createSelect("category-evaluation-type", ["Ordinal", "Linear", "Descriptive"]));
 }
 
-// Function to add cells for the Scenario Input table
+/**
+ * Adds cells for the Scenario Input table.
+ * @function
+ * @name addScenarioInputCells
+ * @description Adds cells to a Scenario Input table row.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ * @param {HTMLTableRowElement} row - The table row to which cells will be added.
+ */
 function addScenarioInputCells(row) {
     // Example cells, modify as per your needs
     addCell(row, `Scenario${row.rowIndex}`);
     addCell(row, createInput("text", "scenario-name"));
 }
 
-// Function to add cells for the Scenario Data table
+/**
+ * Adds cells for the Scenario Data table.
+ * @function
+ * @name addScenarioDataCells
+ * @description Adds cells to a Scenario Data table row.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ * @param {HTMLTableRowElement} row - The table row to which cells will be added.
+ */
 function addScenarioDataCells(row) {
     // Example cells, modify as per your needs
     addCell(row, `Scenario${row.rowIndex}`);
@@ -130,7 +182,16 @@ function addScenarioDataCells(row) {
     addCell(row, createInput("number", "job-created", "1", "0"));
 }
 
-// Function to add a cell with text content or an element
+/**
+ * Adds a cell with text content or an element.
+ * @function
+ * @name addCell
+ * @description Adds a cell to a table row with either text content or an element.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ * @param {HTMLTableRowElement} row - The table row to which cells will be added.
+ * @param {string|HTMLElement} content - The content of the cell. It can be either a string or an HTML element.
+ */
 function addCell(row, content) {
     const cell = row.insertCell(-1);
 
@@ -141,8 +202,19 @@ function addCell(row, content) {
     }
 }
 
-
-// Function to create an input element
+/**
+ * Creates an input element.
+ * @function
+ * @name createInput
+ * @description Creates an input element with specified attributes.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ * @param {string} type - The type of the input element (e.g., "text", "number").
+ * @param {string} className - The class name of the input element.
+ * @param {string} step - The step attribute for number inputs.
+ * @param {string} value - The default value for the input element.
+ * @returns {HTMLInputElement} The created input element.
+ */
 function createInput(type, className, step = "", value = "") {
     const input = document.createElement("input");
     input.type = type;
@@ -156,8 +228,17 @@ function createInput(type, className, step = "", value = "") {
     return input;
 }
 
-
-// Function to create a select element with options
+/**
+ * Creates a select element with options.
+ * @function
+ * @name createSelect
+ * @description Creates a select element with specified options.
+ * @author Utsav Krishnatra
+ * @date 11/20/2023 - 6:31:43 PM
+ * @param {string} className - The class name of the select element.
+ * @param {string[]} options - The array of options for the select element.
+ * @returns {HTMLSelectElement} The created select element.
+ */
 function createSelect(className, options) {
     const select = document.createElement("select");
     select.className = className;
@@ -184,10 +265,7 @@ document.getElementById("addScenarioButton").addEventListener("click", function 
 document.getElementById("addScenarioDataButton").addEventListener("click", function () {
     addRow("scenarioDataTable");
 });
+
 document.getElementById('submitCategoryButton').addEventListener('click', submitCategoryData);
 document.getElementById('submitScenarioInputButton').addEventListener('click', submitScenarioInput);
-document.getElementById('submitScenarioDataButton').addEventListener('click', submitScenarioData)
-
-
-
-
+document.getElementById('submitScenarioDataButton').addEventListener('click', submitScenarioData);
