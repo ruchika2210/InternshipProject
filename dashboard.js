@@ -269,3 +269,63 @@ document.getElementById("addScenarioDataButton").addEventListener("click", funct
 document.getElementById('submitCategoryButton').addEventListener('click', submitCategoryData);
 document.getElementById('submitScenarioInputButton').addEventListener('click', submitScenarioInput);
 document.getElementById('submitScenarioDataButton').addEventListener('click', submitScenarioData);
+
+
+// dashboard.js
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Call functions to create charts
+    createBarChart();
+    createPieChart();
+});
+
+function createBarChart() {
+    // Extract data for the bar chart
+    const scenarioNames = ["Scenario1", "Scenario2", "Scenario3"]; // Replace with actual scenario names
+    const totalDimensionlessScores = [0.8, 0.6, 0.7]; // Replace with actual totalDimensionlessScores
+
+    // Create Bar Chart
+    const barChartCtx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(barChartCtx, {
+        type: 'bar',
+        data: {
+            labels: scenarioNames,
+            datasets: [{
+                label: 'Total Dimensionless Score',
+                data: totalDimensionlessScores,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+            }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
+}
+
+function createPieChart() {
+    // Extract data for the pie chart
+    const categoryNames = ["Category1", "Category2", "Category3"]; // Replace with actual category names
+    const weights = [0.2, 0.3, 0.5]; // Replace with actual weights
+
+    // Create Pie Chart
+    const pieChartCtx = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(pieChartCtx, {
+        type: 'pie',
+        data: {
+            labels: categoryNames,
+            datasets: [{
+                data: weights,
+                backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                borderWidth: 1,
+            }],
+        },
+    });
+}
+
