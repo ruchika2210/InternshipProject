@@ -273,59 +273,71 @@ document.getElementById('submitScenarioDataButton').addEventListener('click', su
 
 // dashboard.js
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Call functions to create charts
-    createBarChart();
-    createPieChart();
-});
+function hideContent(dropdownId) {
+    // // Hide all dropdowns
+    // const dropdowns = document.querySelectorAll('.dropdown');
+    // dropdowns.forEach(dropdown => {
+        
+    // });
 
-function createBarChart() {
-    // Extract data for the bar chart
-    const scenarioNames = ["Scenario1", "Scenario2", "Scenario3"]; // Replace with actual scenario names
-    const totalDimensionlessScores = [0.8, 0.6, 0.7]; // Replace with actual totalDimensionlessScores
+    // Show the selected dropdown
+    const selectedDropdown = document.querySelector(`.${dropdownId}`);
+    if (selectedDropdown.style.display == 'block') {
+        selectedDropdown.style.display = 'none';
+    }else{
+        selectedDropdown.style.display = 'block';
+    }
+}
 
-    // Create Bar Chart
-    const barChartCtx = document.getElementById('barChart').getContext('2d');
-    const barChart = new Chart(barChartCtx, {
-        type: 'bar',
-        data: {
-            labels: scenarioNames,
-            datasets: [{
-                label: 'Total Dimensionless Score',
-                data: totalDimensionlessScores,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
-            }],
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                },
-            },
-        },
+
+function addClass(object,className)
+{
+    const selectedObjs=document.querySelectorAll(object);
+
+    selectedObjs.forEach((cobj,cidx,oarr)=>{
+          cobj.classList.add(className)
+    })
+}
+
+
+function addUniqueIdToClass(className) {
+    const elements = document.querySelectorAll('.' + className);
+    
+    elements.forEach((element, index) => {
+        const uniqueId = className + '-' + index;
+        element.setAttribute('id', uniqueId);
     });
 }
 
-function createPieChart() {
-    // Extract data for the pie chart
-    const categoryNames = ["Category1", "Category2", "Category3"]; // Replace with actual category names
-    const weights = [0.2, 0.3, 0.5]; // Replace with actual weights
 
-    // Create Pie Chart
-    const pieChartCtx = document.getElementById('pieChart').getContext('2d');
-    const pieChart = new Chart(pieChartCtx, {
-        type: 'pie',
-        data: {
-            labels: categoryNames,
-            datasets: [{
-                data: weights,
-                backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)'],
-                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
-                borderWidth: 1,
-            }],
-        },
-    });
+/**
+ * Toggles the lock state for the dashboard.
+ * When locked, prevents new scenario creation.
+ * @param {string} dropdownId - The ID of the dropdown to be toggled.
+ */
+let isLocked = false;
+
+function toggleLock(lockBtnId,...args) {
+    // Toggle the lock state
+    isLocked = !isLocked;
+
+    // Update the lock button text
+    const lockButton = document.getElementById(lockBtnId);
+    lockButton.textContent = isLocked ? 'Unlock' : 'Lock';
+
+    // Disable or enable scenario creation logic based on the lock state
+    const btn1 = document.getElementById(args[0]);
+    const btn2 = document.getElementById(args[1]);
+
+
+    if (isLocked) {
+        // If locked, disable scenario creation
+        btn1.disabled = true;
+        btn2.disabled = true;
+    } else {
+        // If unlocked, enable scenario creation
+        btn1.disabled = false;
+        btn2.disabled = false;
+    }
 }
 

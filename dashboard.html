@@ -16,60 +16,97 @@
         <a href="#scenarioData">Scenario Data Table</a>
     </div>
     
-    <h2 class="dashboard-title" id="categoryInput">Category Input Table</h2>
 
-    <table class="data-table " id="categoryTable">
-        <thead>
-            <tr>
-                <th> </th>
-                <th>Name</th>
-                <th>Weight</th>
-                <th>Direction</th>
-                <th>Evaluation Type</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-        </tbody>
-    </table>
-    <button id="addCategoryButton" class="submit-button">Add Category</button>
-    <button id="submitCategoryButton"  class="submit-button">Submit Category Data</button>
+    <br><br>
+    <div class="table-header-container">
+
+        <h2 class="dashboard-title" id="scenarioInput">Scenario Input Table</h2>
+        <button class="submit-button" style="background-color:red !important;"  onclick="hideContent('dropdown1')">Category Table</button>
+        <button  id='lk1' class="lock-button submit-button" onclick="toggleLock('lk1','addScenarioButton','submitScenarioInputButton')">Lock/Unlock</button>
+    </div>
+    <div class="dropdown1">
+       
+        <table class="data-table" id="scenarioInputTable">
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    
+        <button id="addScenarioButton" class="submit-button">Add Scenario</button>
+        <button id="submitScenarioInputButton" class="submit-button">Submit Scenario Input</button>
+
+
+
+    </div>
     <br><br>
 
-    <h2 class="dashboard-title" id="scenarioInput">Scenario Input Table</h2>
-    <table class="data-table" id="scenarioInputTable">
-        <thead>
-            <tr>
-                <th>Scenario</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-    <button id="addScenarioButton" class="submit-button">Add Scenario</button>
-    <button id="submitScenarioInputButton" class="submit-button">Submit Scenario Input</button>
-    <br><br>
+    <div class="table-header-container">
 
+        <h2 class="dashboard-title" id="categoryInput">Category Input Table</h2>
+        <button class="submit-button" style="background-color:red !important;" onclick="hideContent('dropdown2')">Scenario Input Table</button>
+        <button  id="lk2"  class="lock-button submit-button" onclick="toggleLock('lk2','addCategoryButton','submitCategoryButton')">Lock/Unlock</button>
+
+
+    </div>
+    <div class="dropdown2 ">
+
+        <table class="data-table " id="categoryTable">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Direction</th>
+                    <th>Evaluation Type</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+        <button id="addCategoryButton" class="submit-button">Add Category</button>
+        <button id="submitCategoryButton"  class="submit-button">Submit Category Data</button>
+
+
+
+
+
+    </div>
+    <br><br>
+<div class="table-header-container">
     <h2 class="dashboard-title" id="scenarioData">Scenario Data Table</h2>
-    <table class="data-table" id="scenarioDataTable">
-        <thead>
-            <tr>
-                <th> </th>
-                <th>Emissions Reduction</th>
-                <th>Local Air Quality Impact</th>
-                <th>Wildlife Disturbance</th>
-                <th>Local Income Generation</th>
-                <th>Job Created</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-    <button id="addScenarioDataButton" class="submit-button">Add Scenario Data</button>
-    <button id="submitScenarioDataButton"  class="submit-button">Submit Scenario Data</button>
+     <button class="submit-button" style="background-color:red !important;" onclick="hideContent('dropdown3')">Scenario Data Table</button>
+     <button id='lk3' class="lock-button submit-button" onclick="toggleLock('lk3','addScenarioDataButton','submitScenarioDataButton')">Lock/Unlock</button>
+
+</div>
+
+    <div class="dropdown3">
+        <table class="data-table" id="scenarioDataTable">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Emissions Reduction</th>
+                    <th>Local Air Quality Impact</th>
+                    <th>Wildlife Disturbance</th>
+                    <th>Local Income Generation</th>
+                    <th>Job Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <button id="addScenarioDataButton" class="submit-button">Add Scenario Data</button>
+        <button id="submitScenarioDataButton"  class="submit-button">Submit Scenario Data</button>
+
+    </div>
+   
     <br><br><br>
 
     <h2>Charts</h2>
