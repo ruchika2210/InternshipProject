@@ -1,1 +1,85 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            color: #333;
+            display: inline-block;
+        }
+
+        .button-container {
+            float: right;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-left: 10px;
+            background-color: black;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .delete-button {
+            background-color: black;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Category Details Table</h2>
+
+    <div class="button-container">
+        <button onclick="addCategory()">Add Category</button>
+        <button onclick="commitCategories()">Commit</button>
+    </div>
+
+    <table id="categoryDetails" style="display: none;">
+        <!-- Table Header -->
+        <tr>
+            <th>Category Name</th>
+            <th>Category Weight</th>
+            <th>Category Direction</th>
+            <th>Category Type</th>
+            <th>Action</th>
+        </tr>
+        <!-- Table Body (Populated Dynamically) -->
+    </table>
+
+    <script src="category.js"></script>
+</body>
+</html>
