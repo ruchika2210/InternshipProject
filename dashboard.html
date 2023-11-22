@@ -6,6 +6,10 @@
     <title>Dashboard</title>
      <link rel="stylesheet" href="./dashboard.css">
      <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
+
 </head>
 <body>
     <h1 class="dashboard-title-main">Welcome to Dashboard</h1>
@@ -14,6 +18,8 @@
         <a href="#categoryInput">Category Table</a>
         <a href="#scenarioInput">Scenario Input Table</a>
         <a href="#scenarioData">Scenario Data Table</a>
+        <a href="/authentication.html" onclick="logout()">Logout</a>
+
     </div>
     
 
@@ -132,7 +138,7 @@
 
    
     
-
+    <script src="app.js"></script>
     <script src="dashboard.js"></script>
     <script src="charts.js"></script>
     

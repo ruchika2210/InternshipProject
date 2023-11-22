@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
-
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,onAuthStateChanged,signOut   } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDIEfKKnpQvKrHuOoiIzip9b13mUjNRH4E",
@@ -12,6 +11,9 @@ const firebaseConfig = {
     measurementId: "G-00H33TT2WP"
 };
 
+let isRedirected = false;
+
+
 const app = initializeApp(firebaseConfig);
 let signupBtn=document.getElementById('signupBtn')
 let signinBtn=document.getElementById('signinBtn')
@@ -21,6 +23,54 @@ let title=document.getElementById('title')
 //initialize firebase authentication
 const auth = getAuth(app);
 
+
+
+export function logout() {
+    signOut(auth)
+        .then(() => {
+            // Sign-out successful.
+            window.location.href = 'authentication.html';
+        })
+        .catch((error) => {
+            // An error happened.
+            console.error('Error signing out:', error.message);
+        });
+}
+
+// Function to redirect to login page
+function redirectToLogin() {
+    window.location.href = 'authentication.html';
+}
+
+// Check authentication state when the page loads
+onAuthStateChanged(auth, (user) => {
+    if (!user && isRedirected) {
+        console.log('Redirecting to login page...');
+
+        // User is not authenticated, redirect to the login page
+        redirectToLogin();
+        isRedirected = false;
+    }
+});
+
+// // Check if the user is authenticated
+// onAuthStateChanged(auth, (user) => {
+//     if (!user) {
+//         // User is not authenticated, redirect to the login page
+//         redirectToLogin();
+//     }
+// });
+
+// // Check authentication state when the page loads
+// window.addEventListener('DOMContentLoaded', () => {
+//     // Check if the user is authenticated
+//     const user = auth.currentUser;
+//     console.log(user)
+//     if (!user) {
+//         // User is not authenticated, redirect to the login page
+//         redirectToLogin();
+//     }
+// });
 
 
 signinBtn.onclick=function(){
@@ -44,6 +94,11 @@ const email = document.getElementById('email').value;
 const password = document.getElementById('password').value;
 console.log(email,password,"snd")
 
+if (email.trim() === '' || password.trim() === '') {
+    console.error('Email and password cannot be blank.');
+    return;
+}
+
 createUserWithEmailAndPassword (auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
@@ -59,6 +114,15 @@ createUserWithEmailAndPassword (auth, email, password)
 signinBtn.addEventListener('click', () => {
 const email = document.getElementById('email').value;
 const password = document.getElementById('password').value;
+const errorMessageContainer = document.getElementById('error-message');
+
+errorMessageContainer.innerHTML = '';
+
+
+if (email.trim() === '' || password.trim() === '') {
+    errorMessageContainer.innerHTML = 'Email and password cannot be blank.';
+    return;
+}
 
 signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -67,6 +131,6 @@ signInWithEmailAndPassword(auth, email, password)
         window.location.href = 'dashboard.html'; 
     })
     .catch((error) => {
-        console.error('Error signing in:', error.message);
+        errorMessageContainer.innerHTML = `Error signing in: ${error.message}`;
     });
 });

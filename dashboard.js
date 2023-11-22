@@ -146,15 +146,7 @@ function submitScenarioData() {
 
 // dashboard.js
 
-/**
- * Adds a new row for a category.
- * @function
- * @name addRow
- * @description Adds a new row to the specified table and populates cells based on the table type.
- * @author Utsav Krishnatra
- * @date 11/20/2023 - 6:31:43 PM
- * @param {string} tableId - The ID of the table to which the row will be added.
- */
+
 function addRow(tableId) {
     const table = document.getElementById(tableId);
     const newRow = table.insertRow(-1); // Insert at the last position
@@ -210,15 +202,7 @@ function addCategoryCells(row) {
     addCell(row, createSelect("category-evaluation-type", ["Ordinal", "Linear", "Descriptive"]));
 }
 
-/**
- * Adds cells for the Scenario Input table.
- * @function
- * @name addScenarioInputCells
- * @description Adds cells to a Scenario Input table row.
- * @author Utsav Krishnatra
- * @date 11/20/2023 - 6:31:43 PM
- * @param {HTMLTableRowElement} row - The table row to which cells will be added.
- */
+
 function addScenarioInputCells(row) {
     // Example cells, modify as per your needs
     //addCell(row, `Scenario${row.rowIndex}`);
@@ -227,15 +211,7 @@ function addScenarioInputCells(row) {
     addCell(row, createInput("text", "scenario-name"));
 }
 
-/**
- * Adds cells for the Scenario Data table.
- * @function
- * @name addScenarioDataCells
- * @description Adds cells to a Scenario Data table row.
- * @author Utsav Krishnatra
- * @date 11/20/2023 - 6:31:43 PM
- * @param {HTMLTableRowElement} row - The table row to which cells will be added.
- */
+
 function addScenarioDataCells(row) {
     // Example cells, modify as per your needs
     addCell(row, `Scenario${row.rowIndex}`);
@@ -246,16 +222,7 @@ function addScenarioDataCells(row) {
     addCell(row, createInput("number", "job-created", "1", "0"));
 }
 
-/**
- * Adds a cell with text content or an element.
- * @function
- * @name addCell
- * @description Adds a cell to a table row with either text content or an element.
- * @author Utsav Krishnatra
- * @date 11/20/2023 - 6:31:43 PM
- * @param {HTMLTableRowElement} row - The table row to which cells will be added.
- * @param {string|HTMLElement} content - The content of the cell. It can be either a string or an HTML element.
- */
+
 function addCell(row, content) {
     const cell = row.insertCell(-1);
 
@@ -266,19 +233,7 @@ function addCell(row, content) {
     }
 }
 
-/**
- * Creates an input element.
- * @function
- * @name createInput
- * @description Creates an input element with specified attributes.
- * @author Utsav Krishnatra
- * @date 11/20/2023 - 6:31:43 PM
- * @param {string} type - The type of the input element (e.g., "text", "number").
- * @param {string} className - The class name of the input element.
- * @param {string} step - The step attribute for number inputs.
- * @param {string} value - The default value for the input element.
- * @returns {HTMLInputElement} The created input element.
- */
+
 function createInput(type, className, step = "", value = "") {
     const input = document.createElement("input");
     input.type = type;
@@ -292,17 +247,7 @@ function createInput(type, className, step = "", value = "") {
     return input;
 }
 
-/**
- * Creates a select element with options.
- * @function
- * @name createSelect
- * @description Creates a select element with specified options.
- * @author Utsav Krishnatra
- * @date 11/20/2023 - 6:31:43 PM
- * @param {string} className - The class name of the select element.
- * @param {string[]} options - The array of options for the select element.
- * @returns {HTMLSelectElement} The created select element.
- */
+
 function createSelect(className, options) {
     const select = document.createElement("select");
     select.className = className;
