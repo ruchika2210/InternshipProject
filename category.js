@@ -146,6 +146,9 @@ function commitCategories() {
     }, 0);
 
     console.log("Total Dimensionless Score per Scenario:", totalDimensionlessScore);
+
+    // Store the totalDimensionlessScore in local storage
+    localStorage.setItem("totalDimensionlessScore", totalDimensionlessScore);
 }
 
 
