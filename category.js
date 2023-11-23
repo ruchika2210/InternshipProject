@@ -137,6 +137,15 @@ function commitCategories() {
         const dimensionlessScore = category.weight * linearScore;
         console.log(`Category: ${category.name}, Dimensionless Score: ${dimensionlessScore}`);
     });
+
+    // Calculate and log the total dimensionless score per scenario
+    const totalDimensionlessScore = categoryDetails.reduce((total, category) => {
+        const linearScore = (category.x - min_X) / (max_X - min_X);
+        const dimensionlessScore = category.weight * linearScore;
+        return total + dimensionlessScore;
+    }, 0);
+
+    console.log("Total Dimensionless Score per Scenario:", totalDimensionlessScore);
 }
 
 
