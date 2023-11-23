@@ -22,6 +22,28 @@ function submitCategoryData() {
 }
 
 
+// function submitScenarioInput() {
+//     // Fetch data from the form
+//     const scenarioInputData = {
+//         scenarios: []
+//     };
+
+//     document.querySelectorAll('.data-table:nth-child(2) tbody tr').forEach(row => {
+//         const scenario = {
+//             name: row.querySelector('.scenario-name')?.value
+//         };
+
+//         scenarioInputData.scenarios.push(scenario);
+//     });
+
+//     // Add data to localStorage
+//     localStorage.setItem('scenarioInputData', JSON.stringify(scenarioInputData));
+
+//     alert("Scenario input submitted!");
+//     window.location.href = "/category.html";
+
+// }
+
 function submitScenarioInput() {
     // Fetch data from the form
     const scenarioInputData = {
@@ -39,9 +61,32 @@ function submitScenarioInput() {
     // Add data to localStorage
     localStorage.setItem('scenarioInputData', JSON.stringify(scenarioInputData));
 
+    // Display scenario names in the dropdown
+    updateScenarioDropdown(scenarioInputData.scenarios);
+
     alert("Scenario input submitted!");
     window.location.href = "/category.html";
+}
 
+function updateScenarioDropdown(scenarios) {
+    const dropdown = document.getElementById("scenarioDropdown");
+    
+    // Clear existing options
+    dropdown.innerHTML = "";
+
+    // Add a default option
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Select a Scenario";
+    dropdown.appendChild(defaultOption);
+
+    // Add each scenario as an option
+    scenarios.forEach(scenario => {
+        const option = document.createElement("option");
+        option.value = scenario.name;
+        option.textContent = scenario.name;
+        dropdown.appendChild(option);
+    });
 }
 
 
@@ -280,4 +325,38 @@ function toggleLock(lockBtnId,...args) {
         btn2.disabled = false;
     }
 }
+
+// Rest of your dashboard.js code...
+
+function updateScenarioDropdown(scenarios) {
+    const dropdown = document.getElementById("scenarioDropdown");
+    
+    // Clear existing options
+    dropdown.innerHTML = "";
+
+    // Add a default option
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Select a Scenario";
+    dropdown.appendChild(defaultOption);
+
+    // Add each scenario as an option
+    scenarios.forEach(scenario => {
+        const option = document.createElement("option");
+        option.value = scenario.name;
+        option.textContent = scenario.name;
+        dropdown.appendChild(option);
+    });
+}
+
+// Add this at the end of your `dashboard.js` file
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve scenario data from localStorage
+    const storedScenarioData = localStorage.getItem('scenarioInputData');
+    if (storedScenarioData) {
+        const scenarioData = JSON.parse(storedScenarioData);
+        updateScenarioDropdown(scenarioData.scenarios);
+    }
+});
+
 
