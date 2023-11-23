@@ -1,54 +1,125 @@
-// Counter to track the number of added categories
-let categoryCounter = 0;
+// Array to store category details
+const categoryDetails = [];
 
-// Function to add a new row to the Category Details Table
+// Flag to track if the user has clicked the Commit button
+let isCommitClicked = false;
+
+// Function to add a category row
 function addCategory() {
-    // Increment the category counter
-    categoryCounter++;
+    const tableBody = document.querySelector('table#categoryDetails tbody');
 
-    // Get the Category Details Table
-    const categoryTable = document.getElementById("categoryDetails");
-
-    // Make the table visible if it was hidden
-    if (categoryTable.style.display === "none") {
-        categoryTable.style.display = "table";
+    // Show the table if it's hidden
+    if (tableBody.parentElement.style.display === "none") {
+        tableBody.parentElement.style.display = "table";
     }
 
     // Create a new row
-    const newRow = categoryTable.insertRow();
+    const newRow = tableBody.insertRow(-1);
 
-    // Create cells for each column
-    const nameCell = newRow.insertCell(0);
-    const weightCell = newRow.insertCell(1);
-    const directionCell = newRow.insertCell(2);
-    const typeCell = newRow.insertCell(3);
-    const actionCell = newRow.insertCell(4);
+    // Add cells with input elements
+    addCell(newRow, createInput("text", "category-name"));
+    addCell(newRow, createInput("number", "category-weight", "0.01"));
+    addCell(newRow, createSelect("category-direction", ["Positive", "Negative"]));
+    addCell(newRow, createSelect("category-type", ["Ordinal", "Linear", "Descriptive"]));
 
-    // Set the content of each cell
-    nameCell.innerHTML = `<input type="text" id="categoryName${categoryCounter}" />`;
-    weightCell.innerHTML = `<input type="number" step="0.01" id="categoryWeight${categoryCounter}" />`;
-    directionCell.innerHTML = `<select id="categoryDirection${categoryCounter}">
-                                <option value="Positive">Positive</option>
-                                <option value="Negative">Negative</option>
-                            </select>`;
-    typeCell.innerHTML = `<select id="categoryType${categoryCounter}">
-                            <option value="Linear">Linear</option>
-                            <option value="Ordinal">Ordinal</option>
-                            <option value="Descriptive">Descriptive</option>
-                        </select>`;
-    actionCell.innerHTML = `<button class="delete-button" onclick="deleteCategory(${categoryCounter})">Delete</button>`;
+    // Add a delete button
+    const deleteCell = newRow.insertCell(-1);
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "delete-button";
+    deleteButton.addEventListener("click", function () {
+        tableBody.deleteRow(newRow.rowIndex);
+        if (isCommitClicked) {
+            updateCategoryDetailsArray(); // Update the array after deleting a row only if Commit is clicked
+        }
+    });
+    deleteCell.appendChild(deleteButton);
+
+    if (isCommitClicked) {
+        updateCategoryDetailsArray(); // Update the array after adding a new row only if Commit is clicked
+    }
 }
 
-// Function to handle Commit button click
+
+// Function to update the category details array
+function updateCategoryDetailsArray() {
+    categoryDetails.length = 0; // Clear the array
+
+    // Get all category rows
+    const categoryRows = document.querySelectorAll('table#categoryDetails tbody tr');
+
+    // Iterate through each category row
+    categoryRows.forEach(row => {
+        // Check if the input element in the first cell exists
+        const nameInput = row.querySelector("input");
+        if (nameInput) {
+            const category = {
+                name: nameInput.value,
+                weight: row.cells[1].querySelector("input").value,
+                direction: row.cells[2].querySelector("select").value,
+                type: row.cells[3].querySelector("select").value,
+            };
+
+            // Calculate x by multiplying weight and direction
+            category.x = category.weight * (category.direction === 'Positive' ? 1 : -1);
+
+            categoryDetails.push(category);
+        }
+    });
+
+    // Log the updated array
+    console.log("Category details array after clicking Commit:", categoryDetails);
+
+    // Log calculated x values
+    console.log("Calculated x values:");
+    categoryDetails.forEach(category => {
+        console.log(`Category: ${category.name}, x: ${category.x}`);
+    });
+}
+
+
+
+// Function to create an input element
+function createInput(type, className, value = "") {
+    const input = document.createElement("input");
+    input.type = type;
+    input.className = className;
+    input.value = value;
+    return input;
+}
+
+// Function to create a select element
+function createSelect(className, options) {
+    const select = document.createElement("select");
+    select.className = className;
+
+    options.forEach(optionValue => {
+        const option = document.createElement("option");
+        option.value = optionValue;
+        option.textContent = optionValue;
+        select.appendChild(option);
+    });
+
+    return select;
+}
+
+// Function to add a cell to a row
+function addCell(row, content) {
+    const cell = row.insertCell(-1);
+    cell.appendChild(content);
+}
+
 function commitCategories() {
-    // Add any logic you need for committing categories
-
-    // Redirect to dashboard.html
-    window.location.href = "dashboard.html";
+    isCommitClicked = true; // Set the flag to true when Commit is clicked
+    updateCategoryDetailsArray(); // Update the array after Commit is clicked
+    // ...
 }
 
-// Function to delete a category row
-function deleteCategory(rowNumber) {
-    const categoryTable = document.getElementById("categoryDetails");
-    categoryTable.deleteRow(rowNumber);
-}
+
+
+// // Function to commit category details (you can replace this with your actual commit logic)
+// function commitCategories() {
+//     isCommitClicked = true; // Set the flag to true when Commit is clicked
+//     updateCategoryDetailsArray(); // Update the array after Commit is clicked
+// }
+
