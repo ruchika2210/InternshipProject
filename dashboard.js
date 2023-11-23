@@ -267,7 +267,7 @@ function createSelect(className, options) {
 //     addRow("categoryTable");
 // });
 
-document.getElementById("submitScenarioInputButton").addEventListener("click", function () {
+document.getElementById("addScenarioButton").addEventListener("click", function () {
     addRow("scenarioInputTable");
 });
 
@@ -345,4 +345,3 @@ function toggleLock(lockBtnId,...args) {
         btn2.disabled = false;
     }
 }
-
