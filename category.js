@@ -109,17 +109,34 @@ function addCell(row, content) {
     cell.appendChild(content);
 }
 
-function commitCategories() {
-    isCommitClicked = true; // Set the flag to true when Commit is clicked
-    updateCategoryDetailsArray(); // Update the array after Commit is clicked
-    // ...
-}
-
-
-
-// // Function to commit category details (you can replace this with your actual commit logic)
 // function commitCategories() {
 //     isCommitClicked = true; // Set the flag to true when Commit is clicked
 //     updateCategoryDetailsArray(); // Update the array after Commit is clicked
 // }
+
+function commitCategories() {
+    isCommitClicked = true; // Set the flag to true when Commit is clicked
+    updateCategoryDetailsArray(); // Update the array after Commit is clicked
+
+    // Find the minimum and maximum values of x
+    const xValues = categoryDetails.map(category => category.x);
+    const min_X = Math.min(...xValues);
+    const max_X = Math.max(...xValues);
+
+    // Log the minimum and maximum values of x
+    console.log("Minimum x value:", min_X);
+    console.log("Maximum x value:", max_X);
+
+    // Calculate and log the linear score for each category
+    console.log("Linear Scores:");
+    categoryDetails.forEach(category => {
+        const linearScore = (category.x - min_X) / (max_X - min_X);
+        console.log(`Category: ${category.name}, Linear Score: ${linearScore}`);
+
+        // Calculate dimensionless score
+        const dimensionlessScore = category.weight * linearScore;
+        console.log(`Category: ${category.name}, Dimensionless Score: ${dimensionlessScore}`);
+    });
+}
+
 
