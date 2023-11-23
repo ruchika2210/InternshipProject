@@ -10,8 +10,8 @@ function submitCategoryData() {
     const categoryData = {
         categories: []
     };
-    console.log("submitted!!!");
-    document.querySelectorAll('.data-table tbody tr').forEach(row => {
+
+    document.querySelectorAll('#categoryInput .data-table tbody tr').forEach(row => {
         const category = {
             name: row.querySelector('.category-name')?.value,
             weight: row.querySelector('.category-weight')?.value,
@@ -22,11 +22,8 @@ function submitCategoryData() {
         categoryData.categories.push(category);
     });
 
-    // Add data to localStorage
-    localStorage.setItem('categoryData', JSON.stringify(categoryData));
-    console.log('Script executed!');
-    alert("Category data submitted!");
-}
+    // Store data in local storage
+    storeData('categoryData', categoryData);
 
 /**
  * Submits scenario input data.
@@ -65,12 +62,11 @@ function submitScenarioInput() {
  * @date 11/20/2023 - 6:31:43 PM
  */
 function submitScenarioData() {
-    // Fetch data from the form
     const scenarioData = {
         scenarios: []
     };
 
-    document.querySelectorAll('.data-table:nth-child(3) tbody tr').forEach(row => {
+    document.querySelectorAll('#scenarioData .data-table tbody tr').forEach(row => {
         const scenario = {
             emissionsReduction: row.querySelector('.emissions-reduction')?.value,
             airQualityImpact: row.querySelector('.air-quality-impact')?.value,
@@ -82,8 +78,8 @@ function submitScenarioData() {
         scenarioData.scenarios.push(scenario);
     });
 
-    // Add data to localStorage
-    localStorage.setItem('scenarioData', JSON.stringify(scenarioData));
+    // Store data in local storage
+    storeData('scenarioData', scenarioData);
 
     alert("Scenario data submitted!");
 }
@@ -341,3 +337,7 @@ function toggleLock(lockBtnId,...args) {
     }
 }
 
+    if (storedScenarioData) {
+        renderPieChart(storedScenarioData);
+    }
+});
