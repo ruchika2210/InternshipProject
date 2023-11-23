@@ -243,7 +243,7 @@ function createSelect(className, options) {
 //     addRow("categoryTable");
 // });
 
-document.getElementById("addScenarioButton").addEventListener("click", function () {
+document.getElementById("submitScenarioInputButton").addEventListener("click", function () {
     addRow("scenarioInputTable");
 });
 
