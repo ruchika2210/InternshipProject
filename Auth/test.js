@@ -1,5 +1,5 @@
 import { db } from './auth.js';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
 // Add data to a collection
 const addToCollection = async () => {
