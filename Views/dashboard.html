@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-     <link rel="stylesheet" href="./dashboard.css">
-     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+     <link rel="stylesheet" href="../Styles/dashboard.css">
+     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script> -->
+     <!-- Firebase App (the core Firebase SDK) -->
+     <script type="module" src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js" defer></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js" defer></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js" defer></script>
+
+     
+    
+
 </head>
 <body>
     <h1 class="dashboard-title-main">Welcome to Dashboard</h1>
@@ -22,7 +30,7 @@
 
         <h2 class="dashboard-title" id="scenarioInput">Scenario Input Table</h2>
         <button class="submit-button" style="background-color:red !important;"  onclick="hideContent('dropdown1')">Scenario Input Table</button>
-        <button  id='lk1' class="lock-button submit-button" onclick="toggleLock('lk1','addScenarioButton','submitScenarioInputButton')">Lock/Unlock</button>
+        <button  id='lk1' class="lock-button submit-button" >Lock/Unlock</button>
     </div>
     <div class="dropdown1">
        
@@ -126,11 +134,10 @@
 
    
     
+    <script type="module" src="../Controllers/dashboard.js"></script>
 
-    <script src="dashboard.js"></script>
-    <script src="charts.js"></script>
     
-       
+
     
 
 </body>

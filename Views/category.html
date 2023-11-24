@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Details</title>
+    <link rel="stylesheet" href="../Styles/category.css"> <!-- You can add your own stylesheet if needed -->
+</head>
+<body>
+
+    <h2>Category Details Table</h2>
+
+    <div class="button-container">
+        <button id="addCategoryBtn">Add Category</button>
+        <button id="commitCategoriesBtn">Commit</button>
+    </div>
+
+    <table id="categoryDetails" style="display: none;">
+        <!-- Table Header -->
+        <tr>
+            <th>Category Name</th>
+            <th>Category Weight</th>
+            <th>Category Direction</th>
+            <th>Category Type</th>
+            <th>Action</th>
+        </tr>
+        <!-- Table Body (Populated Dynamically) -->
+    </table>
+
+    <script type="module" src="../Controllers/category.js"></script>
+    
+</body>
+</html>
