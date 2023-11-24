@@ -274,9 +274,26 @@ async function fetechDS() {
     }
 }
 
-fetechDS().then((data)=>{
-    console.log(data);
-});
+// fetechDS().then((data)=>{
+//     console.log(data);
+// });
+fetchDS().then((data) => {
+    console.log("Total Dimensionless Scores Array:", data);
+  
+    // Assuming your Firestore collection for totalDimensionlessScores is called 'totalDimensionlessScores'
+    const tdsCollection = firestore.collection('totalDimensionlessScores');
+  
+    // Adding each totalDimensionlessScore to the new collection
+    data.forEach((tds) => {
+      tdsCollection.add({ totalDimensionlessScore: tds })
+        .then((docRef) => {
+          console.log("Total Dimensionless Score added with ID:", docRef.id);
+        })
+        .catch((error) => {
+          console.error("Error adding Total Dimensionless Score:", error);
+        });
+    });
+  });
 
 //---------------------------------------------for future use---------------------------------------------------
 

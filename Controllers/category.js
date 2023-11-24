@@ -316,12 +316,12 @@ function addCell(row, content) {
 
 
 // Function to check if the docId is valid
-// function isValidDocId(docId) {
-//     // Add your validation logic here
-//     // For example, you might want to check if it's a valid format or if it exists in your database
-//     // Return true if it's valid, false otherwise
-//     return docId !== null && docId !== undefined && docId !== "";
-//   }
+function isValidDocId(docId) {
+    // Add your validation logic here
+    // For example, you might want to check if it's a valid format or if it exists in your database
+    // Return true if it's valid, false otherwise
+    return docId !== null && docId !== undefined && docId !== "";
+  }
   
   // Function to redirect the user to category.html if the docId is valid
   function redirectToCategoryPage() {
@@ -329,7 +329,7 @@ function addCell(row, content) {
   
     if (isValidDocId(docId)) {
       // Valid docId, redirect to category.html
-      window.location.href = `category.html?docId=${docId}`;
+      //do nothing
     } else {
       // Invalid docId, handle the error (redirect to an error page, show an error message, etc.)
       window.location.href = "dashboard.html";
@@ -337,9 +337,4 @@ function addCell(row, content) {
   }
   
   // Call the function when the page loads
-  let  pldflag=true;
- if(pldflag)
- {
-    pldflag=false;
-    redirectToCategoryPage();
- }
+ redirectToCategoryPage();
